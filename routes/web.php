@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+});
 
 Route::get('/signup', function () {
     return view('signup');
@@ -26,3 +26,7 @@ Route::get('/user', function () {
 Route::get('/stock', function () {
     return view('welcome');
 })->name('stock');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
